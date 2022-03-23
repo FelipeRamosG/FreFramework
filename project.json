@@ -1,12 +1,13 @@
 {
   "name": "FReFramework (2021)",
-  "description": "Framework with Datatable",
+  "description": "Framework with Queues",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.5]",
     "UiPath.Mail.Activities": "[1.9.5]",
     "UiPath.System.Activities": "[20.10.4]",
-    "UiPath.UIAutomation.Activities": "[20.10.9]"
+    "UiPath.UIAutomation.Activities": "[20.10.9]",
+    "UiPath.WebAPI.Activities": "[1.9.2]"
   },
   "webServices": [],
   "entitiesStores": [],
