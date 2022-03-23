@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1732,3462</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>960,3394</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -85,7 +85,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckIfUpdatePriority" sap:VirtualizedContainerService.HintSize="760,3397" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence DisplayName="CheckIfUpdatePriority" sap:VirtualizedContainerService.HintSize="760,3329" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="FailedQueueItems" />
     </Sequence.Variables>
@@ -94,26 +94,22 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" FolderPath="[in_OrchestratorFolderName]" sap:VirtualizedContainerService.HintSize="718,79" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[in_OrchestratorQueueName]" Result="[FailedQueueItems]" />
-    <ui:ForEach x:TypeArguments="ui:QueueItem" CurrentIndex="{x:Null}" DisplayName="For Each new queueitem" sap:VirtualizedContainerService.HintSize="718,3186" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[FailedQueueItems]">
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get New Queue Items" FilterStrategy="StartsWith" FolderPath="[in_OrchestratorFolderName]" sap:VirtualizedContainerService.HintSize="718,79" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[in_OrchestratorQueueName]" Result="[FailedQueueItems]" />
+    <ui:ForEach x:TypeArguments="ui:QueueItem" CurrentIndex="{x:Null}" DisplayName="For Each new queueitem" sap:VirtualizedContainerService.HintSize="718,3118" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[FailedQueueItems]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="ui:QueueItem">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:QueueItem" Name="qItem" />
           </ActivityAction.Argument>
-          <If Condition="[qItem.RetryNo&gt;0]" DisplayName="If retried" sap:VirtualizedContainerService.HintSize="682,3052" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[qItem.RetryNo&gt;0]" DisplayName="If retried" sap:VirtualizedContainerService.HintSize="682,2984" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Sequence DisplayName="Update Priority" sap:VirtualizedContainerService.HintSize="646,2865" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence DisplayName="Update Priority" sap:VirtualizedContainerService.HintSize="646,2797" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="LoginCookie" />
                   <Variable x:TypeArguments="x:String" Name="FolderID" />
                   <Variable x:TypeArguments="x:String" Name="RESULT" />
                   <Variable x:TypeArguments="x:Int32" Name="StatusCode" />
-                  <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The QueueItem ID, usualy 9 characters" Name="QueueItemId">
-                    <Variable.Default>
-                      <Literal x:TypeArguments="x:String">129950420</Literal>
-                    </Variable.Default>
-                  </Variable>
+                  <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="The QueueItem ID, usualy 9 characters" Default="129950420" Name="QueueItemId" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -121,7 +117,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign DisplayName="get queueItem Id" sap:VirtualizedContainerService.HintSize="604,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[QueueItemId]</OutArgument>
                   </Assign.To>
@@ -130,7 +126,7 @@
                   </Assign.Value>
                 </Assign>
                 <ui:LogMessage DisplayName="Log Message - Init" sap:VirtualizedContainerService.HintSize="604,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Changing Priority to Queue item with ID &quot;+QueueItemId]" />
-                <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="604,629" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="604,596" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="njl:JObject" Name="JsonResponse" />
                     <Variable x:TypeArguments="x:String" Name="StrLoginResponse" />
@@ -159,11 +155,11 @@
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.UrlSegments>
                   </ui:HttpClient>
-                  <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="497,275" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                  <Switch x:TypeArguments="x:Int32" DisplayName="Switch Login StatusCode" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="497,242" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                     <Switch.Default>
-                      <Throw Exception="[New SystemException(&quot;Error while login into cloud&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      <Throw DisplayName="Throw Login Error" Exception="[New SystemException(&quot;Error while login into cloud&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
                     </Switch.Default>
-                    <ui:LogMessage x:Key="200" DisplayName="Log Message - Init" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Login Successful&quot;]" />
+                    <ui:LogMessage x:Key="200" DisplayName="Log Message LoginSuccess" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Login Successful&quot;]" />
                   </Switch>
                   <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - LogIn Result" sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[JsonResponse]" JsonString="[StrLoginResponse]" />
                   <Assign DisplayName="getLoginCookie" sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -175,7 +171,7 @@
                     </Assign.Value>
                   </Assign>
                 </Sequence>
-                <Sequence DisplayName="getFolder" sap:VirtualizedContainerService.HintSize="604,1496" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="getFolder" sap:VirtualizedContainerService.HintSize="604,1494" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="StrGetFolderResponse" />
                     <Variable x:TypeArguments="njl:JObject" Name="JsonFolderResponse" />
@@ -206,9 +202,9 @@
                       <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                     </ui:HttpClient.UrlSegments>
                   </ui:HttpClient>
-                  <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="562,244" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                  <Switch x:TypeArguments="x:Int32" DisplayName="Switch Get Folders Status Code" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="562,242" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                     <Switch.Default>
-                      <Throw Exception="[New SystemException(&quot;Error while getting folders&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                      <Throw DisplayName="Throw Folder Error" Exception="[New SystemException(&quot;Error while getting folders&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
                     </Switch.Default>
                     <x:Null x:Key="200" />
                   </Switch>
@@ -229,7 +225,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[JsonResultFolder]" JsonString="[Folder.ToString]" />
+                          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON Folder" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[JsonResultFolder]" JsonString="[Folder.ToString]" />
                           <If Condition="[JsonResultFolder(&quot;DisplayName&quot;).ToString.ToLower.Equals(in_OrchestratorFolderName.ToLower)]" DisplayName="If Folder in Orchestratror Equals Folder wanted" sap:VirtualizedContainerService.HintSize="484,532" sap2010:WorkflowViewState.IdRef="If_1">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -252,7 +248,7 @@
                                     <InArgument x:TypeArguments="x:String">[JsonResultFolder("Id").ToString]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:LogMessage DisplayName="Log Message - Init" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Folder Id for &quot;+in_OrchestratorFolderName+&quot;: &quot;+FolderID]" />
+                                <ui:LogMessage DisplayName="Log Message - FolderId" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Trace" Message="[&quot;Folder Id for &quot;+in_OrchestratorFolderName+&quot;: &quot;+FolderID]" />
                                 <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_1" />
                               </Sequence>
                             </If.Then>
@@ -288,11 +284,11 @@
                     <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
                   </ui:HttpClient.UrlSegments>
                 </ui:HttpClient>
-                <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="604,275" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+                <Switch x:TypeArguments="x:Int32" DisplayName="Switch Change Priority Status Code" Expression="[StatusCode]" sap:VirtualizedContainerService.HintSize="604,242" sap2010:WorkflowViewState.IdRef="Switch`1_4">
                   <Switch.Default>
-                    <Throw Exception="[New SystemException(&quot;Error while updating queue item&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                    <Throw DisplayName="Throw Update Error" Exception="[New SystemException(&quot;Error while updating queue item&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
                   </Switch.Default>
-                  <ui:LogMessage x:Key="200" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Changed Priority to Queue item with ID &quot;+QueueItemId+Environment.NewLine+&quot;New Priority: &quot;+in_Priority]" />
+                  <ui:LogMessage x:Key="200" DisplayName="Log Message - End Process" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Changed Priority to Queue item with ID &quot;+QueueItemId+Environment.NewLine+&quot;New Priority: &quot;+in_Priority]" />
                 </Switch>
               </Sequence>
             </If.Then>
