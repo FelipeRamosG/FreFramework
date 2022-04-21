@@ -1,17 +1,17 @@
 {
-  "name": "FReFramework (2021)",
-  "description": "Framework with Datatable",
+  "name": "ReFramework.2022",
+  "description": "Robotic Enterprise Framework BeeckerCo Template with Excel File",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.9.5]",
-    "UiPath.Mail.Activities": "[1.9.5]",
-    "UiPath.System.Activities": "[20.10.4]",
-    "UiPath.UIAutomation.Activities": "[20.10.9]"
+    "UiPath.Excel.Activities": "[2.11.4]",
+    "UiPath.Mail.Activities": "[1.12.3]",
+    "UiPath.System.Activities": "[21.10.4]",
+    "UiPath.UIAutomation.Activities": "[21.10.5]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
-  "studioVersion": "20.10.6.0",
+  "studioVersion": "21.10.5.0",
   "projectVersion": "1.0.0",
   "runtimeOptions": {
     "autoDispose": false,
@@ -27,7 +27,7 @@
     "executionType": "Workflow",
     "readyForPiP": false,
     "startsInPiP": false,
-    "mustRestoreAllDependencies": false
+    "mustRestoreAllDependencies": true
   },
   "designOptions": {
     "projectProfile": "Developement",
@@ -46,7 +46,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "8cebcfab-0323-45c3-9509-d04f77dba6d0",
+      "uniqueId": "ab9adf29-05e2-4081-b1eb-dffe444bb27f",
       "input": [],
       "output": []
     }
