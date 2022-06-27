@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1163,732</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240,789</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendNotificationMail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="52">
+    <scg:List x:TypeArguments="x:String" Capacity="31">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -40,10 +40,12 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -74,59 +76,62 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="If active, sends a notification mail with the current status of the excecution." DisplayName="Send Notification Mail" sap:VirtualizedContainerService.HintSize="634,667" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="If active, sends a notification mail with the current status of the excecution." DisplayName="Send Notification Mail" sap:VirtualizedContainerService.HintSize="994,724" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="Body" />
+      <Variable x:TypeArguments="x:String" Name="botSignature" />
+      <Variable x:TypeArguments="x:Boolean" Name="logExists" />
+      <Variable x:TypeArguments="x:String" Name="Username" />
+      <Variable x:TypeArguments="x:String" Name="Password" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Point x:Key="ShapeLocation">830,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,166.5</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">830,40 750,40 750,86.5</av:PointCollection>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Double x:Key="Width">960</x:Double>
+        <x:Double x:Key="Height">657.07999999999993</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision x:Name="__ReferenceID1" Condition="[in_Config(&quot;SendDefaultMails&quot;).ToString.ToLower.Equals(&quot;true&quot;)]" DisplayName="Notification Mail Activated?" sap:VirtualizedContainerService.HintSize="153,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+    <FlowDecision x:Name="__ReferenceID9" Condition="[in_Config(&quot;SendDefaultMails&quot;).ToString.ToLower.Equals(&quot;true&quot;)]" DisplayName="Notification Mail Activated?" sap:VirtualizedContainerService.HintSize="153,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <av:Point x:Key="ShapeLocation">223.5,166.5</av:Point>
+          <av:Point x:Key="ShapeLocation">673.5,86.5</av:Point>
           <av:Size x:Key="ShapeSize">153,87</av:Size>
-          <av:PointCollection x:Key="TrueConnector">223.5,210 110,210 110,296</av:PointCollection>
+          <av:PointCollection x:Key="TrueConnector">673.5,130 510,130 510,167</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowDecision.True>
         <FlowStep x:Name="__ReferenceID0">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">10,296</av:Point>
-              <av:Size x:Key="ShapeSize">200,108</av:Size>
+              <av:Point x:Key="ShapeLocation">410,167</av:Point>
+              <av:Size x:Key="ShapeSize">200,66</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">510,233 510,266.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="Sends a notification Mail with the status of the excecution." DisplayName="Send Default Notification Mail" sap:VirtualizedContainerService.HintSize="1555,1429" sap2010:WorkflowViewState.IdRef="Sequence_10">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="BotSignature" />
-              <Variable x:TypeArguments="x:Boolean" Name="LogExists" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Prepare mail" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message (Send Notification Mail)" sap:VirtualizedContainerService.HintSize="1513,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Sending default notification mail&quot;]" />
-            <ui:ReadTextFile Content="[botSignature]" DisplayName="getBotSignature" FileName="Data\Extras\MailsTemplates\Bot_Signature.html" sap:VirtualizedContainerService.HintSize="1513,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
-            <ui:ReadTextFile Content="[Body]" DisplayName="GetBotBody" FileName="[in_BodyPath]" sap:VirtualizedContainerService.HintSize="1513,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
-            <Assign DisplayName="replaceBotName" sap:VirtualizedContainerService.HintSize="1513,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <ui:LogMessage DisplayName="Log Message (Send Notification Mail)" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Sending default notification mail&quot;]" />
+            <ui:ReadTextFile Content="[botSignature]" DisplayName="getBotSignature" FileName="Data\Extras\MailsTemplates\Bot_Signature.html" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_4" />
+            <ui:ReadTextFile Content="[Body]" DisplayName="GetBotBody" FileName="[in_BodyPath]" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
+            <Assign DisplayName="replaceBotName" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[Body]</OutArgument>
               </Assign.To>
@@ -134,95 +139,160 @@
                 <InArgument x:TypeArguments="x:String">[Body.Replace("[botName]",in_Config("BotName").ToString).Replace("[Orchestrator URL]",in_Config("OrchestratorURL").ToString)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:PathExists DisplayName="LOG Exists" Exists="[logExists]" sap:VirtualizedContainerService.HintSize="1513,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;LOG\LOG_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString)+&quot;_&quot;+in_Config(&quot;BotName&quot;).toString+&quot;.csv&quot;]" PathType="File" />
-            <If Condition="[in_Config(&quot;MailServer&quot;).ToString.ToLower.Equals(&quot;smtp&quot;)]" DisplayName="CheckSendMedium" sap:VirtualizedContainerService.HintSize="1513,708" sap2010:WorkflowViewState.IdRef="If_6">
+            <ui:PathExists DisplayName="LOG Exists" Exists="[logExists]" sap:VirtualizedContainerService.HintSize="384,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[&quot;LOG\LOG_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString)+&quot;_&quot;+in_Config(&quot;BotName&quot;).toString+&quot;.csv&quot;]" PathType="File" />
+          </Sequence>
+          <FlowStep.Next>
+            <FlowDecision x:Name="__ReferenceID1" DisplayName="Check Server" sap:VirtualizedContainerService.HintSize="74,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+              <FlowDecision.Condition>
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_Config(&quot;MailServer&quot;).ToString.ToLower.Equals(&quot;smtp&quot;)" />
+              </FlowDecision.Condition>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">473,266.5</av:Point>
+                  <av:Size x:Key="ShapeSize">74,87</av:Size>
+                  <av:PointCollection x:Key="TrueConnector">473,310 290,310 290,334.5</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">547,310 750,310 750,336.5</av:PointCollection>
+                  <x:String x:Key="TrueLabel">SMTP</x:String>
+                  <x:String x:Key="FalseLabel">Outlook</x:String>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If.Then>
-                <Sequence DisplayName="SendViaSMTP" sap:VirtualizedContainerService.HintSize="755,550" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="Username" />
-                    <Variable x:TypeArguments="x:String" Name="Password" />
-                  </Sequence.Variables>
+              <FlowDecision.True>
+                <FlowStep x:Name="__ReferenceID5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">190,334.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">290,385.5 290,416.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetOrchestratorCredentials workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorCredentials.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetOrchestratorCredentials workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorCredentials.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">[in_Config("Cred_RPA").ToString]</InArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[Username]</OutArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_Password">[Password]</OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Cred_RPA&quot;).ToString" />
+                      </InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_Username">
+                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Username" />
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_Password">
+                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Password" />
+                      </OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <If Condition="[logExists]" DisplayName="Check If Log Exists for SMTP" sap:VirtualizedContainerService.HintSize="713,306" sap2010:WorkflowViewState.IdRef="If_7">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Directory.GetFiles(in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;/&quot;+in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString))]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send SMTP Mail With Log" Email="[Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Password="[Password]" Port="[CInt(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
-                        <ui:SendMail.Files>
-                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                            <InArgument x:TypeArguments="x:String">["LOG\LOG_"+System.DateTime.Now.ToString(in_Config("LogFormat").toString)+"_"+in_Config("BotName").toString+".csv"]</InArgument>
-                          </scg:List>
-                        </ui:SendMail.Files>
-                      </ui:SendMail>
-                    </If.Then>
-                    <If.Else>
-                      <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send SMTP Mail Without Log" Email="[Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="True" Password="[Password]" Port="[CInt(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
-                        <ui:SendMail.Files>
-                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
-                        </ui:SendMail.Files>
-                      </ui:SendMail>
-                    </If.Else>
-                  </If>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <If Condition="[logExists]" DisplayName="Check If Log Exists for Outlook" sap:VirtualizedContainerService.HintSize="713,306" sap2010:WorkflowViewState.IdRef="If_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Config(&quot;BotMail&quot;).ToString]" AttachmentsCollection="[Directory.GetFiles(in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;/&quot;+in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString))]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send Outlook Mail With Log" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
-                      <ui:SendOutlookMail.Files>
-                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                          <InArgument x:TypeArguments="x:String">["LOG\LOG_"+System.DateTime.Now.ToString(in_Config("LogFormat").toString)+"_"+in_Config("BotName").toString+".csv"]</InArgument>
-                        </scg:List>
-                      </ui:SendOutlookMail.Files>
+                  <FlowStep.Next>
+                    <FlowDecision x:Name="__ReferenceID6" Condition="[logExists]" DisplayName="Log exists?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">255,416.5</av:Point>
+                          <av:Size x:Key="ShapeSize">70,87</av:Size>
+                          <av:PointCollection x:Key="TrueConnector">255,460 180,460 180,514.5</av:PointCollection>
+                          <av:PointCollection x:Key="FalseConnector">325,460 390,460 390,514.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:SendOutlookMail>
-                  </If.Then>
-                  <If.Else>
-                    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Config(&quot;BotMail&quot;).ToString]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send Outlook Mail Without Log" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
-                      <ui:SendOutlookMail.Files>
-                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
-                      </ui:SendOutlookMail.Files>
-                    </ui:SendOutlookMail>
-                  </If.Else>
-                </If>
-              </If.Else>
-            </If>
-          </Sequence>
+                      <FlowDecision.True>
+                        <FlowStep x:Name="__ReferenceID7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">80,514.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Directory.GetFiles(in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;/&quot;+in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString))]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send SMTP Mail With Log" Email="[Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendMail_5" IsBodyHtml="True" Password="[Password]" Port="[CInt(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
+                            <ui:SendMail.Files>
+                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                                <InArgument x:TypeArguments="x:String">["LOG\LOG_"+System.DateTime.Now.ToString(in_Config("LogFormat").toString)+"_"+in_Config("BotName").toString+".csv"]</InArgument>
+                              </scg:List>
+                            </ui:SendMail.Files>
+                          </ui:SendMail>
+                        </FlowStep>
+                      </FlowDecision.True>
+                      <FlowDecision.False>
+                        <FlowStep x:Name="__ReferenceID8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">290,514.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send SMTP Mail Without Log" Email="[Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendMail_6" IsBodyHtml="True" Password="[Password]" Port="[CInt(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" Server="[in_Config(&quot;SMTPServer&quot;).ToString]" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
+                            <ui:SendMail.Files>
+                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                            </ui:SendMail.Files>
+                          </ui:SendMail>
+                        </FlowStep>
+                      </FlowDecision.False>
+                    </FlowDecision>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowDecision.True>
+              <FlowDecision.False>
+                <FlowDecision x:Name="__ReferenceID2" DisplayName="Log exists?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                  <FlowDecision.Condition>
+                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="logExists" />
+                  </FlowDecision.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">715,336.5</av:Point>
+                      <av:Size x:Key="ShapeSize">70,87</av:Size>
+                      <av:PointCollection x:Key="TrueConnector">715,380 650,380 650,434.5</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">785,380 860,380 860,434.5</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">550,434.5</av:Point>
+                          <av:Size x:Key="ShapeSize">200,51</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Config(&quot;BotMail&quot;).ToString]" AttachmentsCollection="[Directory.GetFiles(in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;/&quot;+in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString+&quot;_&quot;+System.DateTime.Now.ToString(in_Config(&quot;LogFormat&quot;).toString))]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send Outlook Mail With Log" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendOutlookMail_7" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
+                        <ui:SendOutlookMail.Files>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">["LOG\LOG_"+System.DateTime.Now.ToString(in_Config("LogFormat").toString)+"_"+in_Config("BotName").toString+".csv"]</InArgument>
+                          </scg:List>
+                        </ui:SendOutlookMail.Files>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:SendOutlookMail>
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowStep x:Name="__ReferenceID4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">760,434.5</av:Point>
+                          <av:Size x:Key="ShapeSize">200,51</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[in_Config(&quot;BotMail&quot;).ToString]" Body="[Body+Environment.NewLine+botSignature]" DisplayName="Send Outlook Mail Without Log" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendOutlookMail_8" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_Config(&quot;NotificationMail&quot;).ToString]">
+                        <ui:SendOutlookMail.Files>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                        </ui:SendOutlookMail.Files>
+                      </ui:SendOutlookMail>
+                    </FlowStep>
+                  </FlowDecision.False>
+                </FlowDecision>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowStep.Next>
         </FlowStep>
       </FlowDecision.True>
     </FlowDecision>
     <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
   </Flowchart>
 </Activity>
