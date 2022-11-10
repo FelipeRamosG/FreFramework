@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1794,1996</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1264,1844</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -96,7 +96,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="427,1931" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration Dictionary to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="427,1779" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -284,7 +284,7 @@
       </TryCatch.Catches>
     </TryCatch>
     <ui:CreateDirectory Output="{x:Null}" ContinueOnError="True" DisplayName="Creates the folder for DataPath" sap:VirtualizedContainerService.HintSize="385,51" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[out_Config(&quot;DataPath&quot;).toString]" />
-    <Sequence DisplayName="Start Platform" sap:VirtualizedContainerService.HintSize="385,1178" sap2010:WorkflowViewState.IdRef="Sequence_12">
+    <Sequence DisplayName="Start Platform" sap:VirtualizedContainerService.HintSize="385,1026" sap2010:WorkflowViewState.IdRef="Sequence_12">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="PlatformToken" />
         <Variable x:TypeArguments="x:String" Name="PlatformExecutionID" />
@@ -304,30 +304,11 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:Delete>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\AddTransactionToLog.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="343,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\AddTransactionToLog.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_Status">Status</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_TransactionItem">Username</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_Detail">Detail</InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[out_Config]</InArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsPinned">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\GetOrchestratorCredentials.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="343,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorCredentials.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_Config(&quot;PlatformAPICredentials&quot;).ToString" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_Username">
-            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Username" />
-          </OutArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_Password">
-            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Password" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">[out_Config("PlatformAPICredentials").ToString]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[Username]</OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Password">[Password]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -357,7 +338,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </b:Set_New_Run>
-      <Assign DisplayName="Set PlatformExecutionID in Config" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_25">
+      <Assign DisplayName="Set PlatformExecutionID in Config" sap:VirtualizedContainerService.HintSize="343,60" sap2010:WorkflowViewState.IdRef="Assign_25">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Object">[out_Config("PlatformExecutionID")]</OutArgument>
         </Assign.To>
@@ -366,6 +347,6 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <ui:Comment DisplayName="Init Settings Comment" sap:VirtualizedContainerService.HintSize="376,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//Insert your code next to this activity" />
+    <ui:Comment DisplayName="Init Settings Comment" sap:VirtualizedContainerService.HintSize="385,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//Insert your code next to this activity" />
   </Sequence>
 </Activity>

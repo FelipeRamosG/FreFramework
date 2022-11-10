@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1011,1369</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240,1369</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ACME_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -85,11 +85,7 @@
           </ActivityAction.Argument>
           <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="922,1111" sap2010:WorkflowViewState.IdRef="Flowchart_2">
             <Flowchart.Variables>
-              <Variable x:TypeArguments="x:Int32" Name="RetryNumber">
-                <Variable.Default>
-                  <Literal x:TypeArguments="x:Int32" />
-                </Variable.Default>
-              </Variable>
+              <Variable x:TypeArguments="x:Int32" Default="0" Name="RetryNumber" />
               <Variable x:TypeArguments="x:Boolean" Name="LogoutExists" />
               <Variable x:TypeArguments="x:Boolean" Name="LoginFormExists" />
               <Variable x:TypeArguments="x:String" Name="Username" />
@@ -212,15 +208,9 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\GetOrchestratorCredentials.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Framework\GetOrchestratorCredentials.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">
-                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CredentialAsset" />
-                                      </InArgument>
-                                      <OutArgument x:TypeArguments="x:String" x:Key="out_Username">
-                                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Username" />
-                                      </OutArgument>
-                                      <OutArgument x:TypeArguments="x:String" x:Key="out_Password">
-                                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="Password" />
-                                      </OutArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_CredentialName">[in_CredentialAsset]</InArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[Username]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_Password">[Password]</OutArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <FlowStep.Next>
@@ -232,7 +222,7 @@
                                           <av:PointCollection x:Key="ConnectorLocation">520,625.5 520,654.5</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type - Username" EmptyField="True" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[Username+&quot;xd&quot;]">
+                                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type - Username" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[Username]">
                                         <ui:TypeInto.Target>
                                           <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8270313b-0a82-4549-ab52-44887ccc002b" InformativeScreenshot="b4770bf0b420ac0cfbbd9730d9357700" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Log In' /&gt;&lt;webctrl tag='INPUT' type='email' /&gt;">
                                             <ui:Target.TimeoutMS>
@@ -353,10 +343,7 @@
                                                             </sap:WorkflowViewStateService.ViewState>
                                                           </Assign>
                                                           <FlowStep.Next>
-                                                            <FlowDecision x:Name="__ReferenceID11" DisplayName="MaxRetryNumReached?" sap:VirtualizedContainerService.HintSize="133,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
-                                                              <FlowDecision.Condition>
-                                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="RetryNumber=3" />
-                                                              </FlowDecision.Condition>
+                                                            <FlowDecision x:Name="__ReferenceID11" Condition="[RetryNumber=3]" DisplayName="MaxRetryNumReached?" sap:VirtualizedContainerService.HintSize="133,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
