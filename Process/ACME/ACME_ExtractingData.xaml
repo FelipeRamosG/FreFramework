@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1395,1194</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,1194</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ACME_ExtractingData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -83,7 +83,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser ACME DashBoard Page" sap:VirtualizedContainerService.HintSize="510,1037" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="91b2827bad8761ce3e91540dcab97932" Selector="&lt;html app='chrome.exe' title='ACME*System*' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser ACME DashBoard Page" sap:VirtualizedContainerService.HintSize="510,1037" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="91b2827bad8761ce3e91540dcab97932" Selector="&lt;html app='chrome.exe' title='ACME*System*' /&gt;" TimeoutMS="5000">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
