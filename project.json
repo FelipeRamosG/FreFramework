@@ -3,7 +3,7 @@
   "description": "Robotic Enterprise Framework BeeckerCo Template with Excel File and Platform integration",
   "main": "Main.xaml",
   "dependencies": {
-    "BeeckerCo.Platform.Activities": "[1.0.2.4]",
+    "BeeckerCo.Platform.Activities": "[1.0.2.5]",
     "UiPath.Excel.Activities": "[2.11.4]",
     "UiPath.Mail.Activities": "[1.12.3]",
     "UiPath.System.Activities": "[22.10.3]",
